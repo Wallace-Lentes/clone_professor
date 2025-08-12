@@ -5,16 +5,24 @@ from biblioteca import Biblioteca
 def main():  # alimentação da biblioteca
     biblioteca = Biblioteca()
 
-    biblioteca.cadastrar_livro(livro("Python para Iniciantes", "wallace lentes", 2020, 3))
-    biblioteca.cadastrar_livro(livro("POO em python", "Maria Fernanda", 2023, 2))
+    biblioteca.cadastrar_livro(livro("Introdução à Inteligência Artificial", "Ana Souza", 2021, 5))
+    biblioteca.cadastrar_livro(livro("Algoritmos e Estruturas de Dados", "Carlos Pereira", 2019, 4))
+    biblioteca.cadastrar_livro(livro("Desenvolvimento Web com Django", "Fernanda Lima", 2022, 3))
+    biblioteca.cadastrar_livro(livro("Banco de Dados para Iniciantes", "Ricardo Alves", 2018, 6))
 
-    biblioteca.cadastrar_usuario(usuario("cleiton", "cleiton@email.com", 1))
-    biblioteca.cadastrar_usuario(usuario("Amanda", "amanda@email.com", 2))
+
+
+    biblioteca.cadastrar_usuario(usuario("João Silva", "joao.silva@email.com", 3))
+    biblioteca.cadastrar_usuario(usuario("Mariana Costa", "mariana.costa@email.com", 4))
+    biblioteca.cadastrar_usuario(usuario("Pedro Oliveira", "pedro.oliveira@email.com", 5))
+    biblioteca.cadastrar_usuario(usuario("Beatriz Fernandes", "beatriz.fernandes@email.com", 6))
+
 
     # emprestar e devolver
-    biblioteca.emprestar_livro(1, "Python para Iniciantes")
-    biblioteca.emprestar_livro(2, "POO em python")
-    biblioteca.devolver_livro(1, "Python para Iniciantes")
+    biblioteca.emprestar_livro(3, "Introdução à Inteligência Artificial")  
+    biblioteca.emprestar_livro(4, "Desenvolvimento Web com Django")      
+    biblioteca.devolver_livro(3, "Introdução à Inteligência Artificial")   
+
 
     biblioteca.listar_livros()
     biblioteca.listar_usuarios()
