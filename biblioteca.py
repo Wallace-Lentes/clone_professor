@@ -1,14 +1,17 @@
-from livro import livro
-from leitor import usuario
+# from livro import livro
+# from leitor import usuario
 
 class Biblioteca:
     def __init__(self):
         self.livros = []
         self.usuarios = []
+        self.atualizar_status_callback = None  # callback para o Tkinter
 
     def cadastrar_livro(self, livro):
         self.livros.append(livro)
         print(f"📘 Livro '{livro.titulo}' cadastrado com sucesso!")
+        if self.atualizar_status_callback:
+            self.atualizar_status_callback()
 
     def cadastrar_usuario(self, usuario):
         self.usuarios.append(usuario)
@@ -31,6 +34,8 @@ class Biblioteca:
         usuario.livros_emprestado.append(livro.titulo)
         livro.quantidade -= 1
         print(f"✅ Livro '{livro.titulo}' emprestado para {usuario.nome_usuario}.")
+        if self.atualizar_status_callback:
+            self.atualizar_status_callback()
 
     def devolver_livro(self, id_usuario, titulo_livro):
         usuario = next((u for u in self.usuarios if u.id_usuario == id_usuario), None)
@@ -49,13 +54,14 @@ class Biblioteca:
                 break
 
         print(f"🔄 Livro '{titulo_livro}' devolvido por {usuario.nome_usuario}.")
+        if self.atualizar_status_callback:
+            self.atualizar_status_callback()
 
     def listar_livros(self):
-       if not self.livros:
-          return []
-       return [f"{livro.titulo} - {livro.autor} ({livro.ano}) - {livro.quantidade} disponíveis"
-               for livro in self.livros]
-
+        if not self.livros:
+            return []
+        return [f"{livro.titulo} - {livro.autor} ({livro.ano}) - {livro.quantidade} disponíveis"
+                for livro in self.livros]
 
     def listar_usuarios(self):
         if not self.usuarios:
